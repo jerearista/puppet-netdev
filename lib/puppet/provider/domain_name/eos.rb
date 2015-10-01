@@ -11,6 +11,9 @@ rescue LoadError => detail
 end
 
 Puppet::Type.type(:domain_name).provide(:eos) do
+  unless ENV['RBEAPI_CONNECTION']
+    confine :operatingsystem => [:AristaEOS]
+  end
 
   # Create methods that set the @property_hash for the #flush method
   mk_resource_methods

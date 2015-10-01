@@ -11,6 +11,9 @@ rescue LoadError => detail
 end
 
 Puppet::Type.type(:radius_server_group).provide(:eos) do
+  unless ENV['RBEAPI_CONNECTION']
+    confine :operatingsystem => [:AristaEOS]
+  end
 
   DEFAULT_RADIUS_AUTH_PORT = '1812'
   DEFAULT_RADIUS_ACCT_PORT = '1813'
