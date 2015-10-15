@@ -14,6 +14,7 @@ Puppet::Type.type(:tacacs_server_group).provide(:eos) do
   unless ENV['RBEAPI_CONNECTION']
     confine :operatingsystem => [:AristaEOS]
   end
+  confine :feature => :rbeapi
 
   DEFAULT_TACACS_PORT = '49'
 

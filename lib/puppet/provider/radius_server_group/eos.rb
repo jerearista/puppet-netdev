@@ -14,6 +14,7 @@ Puppet::Type.type(:radius_server_group).provide(:eos) do
   unless ENV['RBEAPI_CONNECTION']
     confine :operatingsystem => [:AristaEOS]
   end
+  confine :feature => :rbeapi
 
   DEFAULT_RADIUS_AUTH_PORT = '1812'
   DEFAULT_RADIUS_ACCT_PORT = '1813'
